@@ -5,13 +5,25 @@ const bodyparser = require("body-parser");
 const path = require('path');
 // const ejsLint = require('ejs-lint');
 
+const run = require('./server/database/connection');
+const client = require('./server/database/connection');
+const { default: mongoose } = require('mongoose');
+
 const app = express();
 
+
 dotenv.config({path:'config.env'})
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
+
+
+const uri = "mongodb+srv://ajinkyapathare123:ajinkya123@cluster0.7vxhrqt.mongodb.net/users?retryWrites=true&w=majority";
 
 //log requests
 app.use(morgan('tiny'));
+
+//mongodb connection
+mongoose.connect(uri);
+
 
 //parse request to body-parser
 app.use(bodyparser.urlencoded({extended: true}))
@@ -29,5 +41,5 @@ app.use('/js', express.static(path.resolve(__dirname,"assets/js")))
 app.use('/', require('./server/routes/router'))
 
 app.listen(PORT,()=> {
-    console.log(`Server is running on http://localhost:${3000}`)
+    console.log(`Server is running on http://localhost:${PORT}`)
 });

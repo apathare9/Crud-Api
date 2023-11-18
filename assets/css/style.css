@@ -68,11 +68,14 @@ color: var(--light);
 }
 
 #header nav{
-    background-color: #06d6a0;
+    background-color: rgb(18, 18, 62);
     padding: 1em 0;
     width: 100%;
 }
 
+#col{
+    color: white;
+}
 #site-main{
     margin-top: 6em;
     font-family: 'Barlow', sans-serif;
@@ -105,9 +108,9 @@ table{
     font-size: 1.1em;
     margin: 0 .2em;
 }
-.table tr:hover{
-    background-color: #06d6a0;
-}
+/* .table tr:hover{
+    background-color:  #004432;
+} */
 
 .table tr:hover td>a{
     box-shadow: none;
